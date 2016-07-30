@@ -23,14 +23,8 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" asp-for="Images"></label>
-                        <div class="col-sm-4">
-                            <fieldset class="myFieldSet">
-                                <input type="file" asp-for="Images[0].FileName"/><br />
-                                <input class="form-control"  asp-for="Images[0].Order" placeholder="Order" /><br />
-                                <input type="checkbox" asp-for="Images[0].IsEnabled"/> Is Enabled?
-                            </fieldset>
-                        </div>
-                        <div class="col-sm-4">
+                        <span class="glyphicon glyphicon-new-window" id="btnAddImage"></span>
+                        <div class="col-sm-4" id="imageHolder">
                             <fieldset class="myFieldSet">
                                 <input type="file" asp-for="Images[0].FileName" /><br />
                                 <input class="form-control" asp-for="Images[0].Order" placeholder="Order" /><br />

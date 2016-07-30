@@ -22,5 +22,6 @@ namespace GymWebsite.ViewModels
         public string FileName { get; set; }
         public int Order { get; set; }
         public bool IsEnabled { get; set; }
+        public bool IsCoverPhoto { get; set; }
     }
 }

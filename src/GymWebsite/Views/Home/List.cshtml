@@ -1,21 +1,32 @@
 ﻿@model List<GymWebsite.ViewModels.Gym>
-@{ 
+@{
     ViewBag.Title = "Home Page";
 }
 
 <a asp-action="create" class="btn btn-info">Create a new gym</a>
 <hr />
 
-<table class="table table-bordered table-condensed table-striped">
-    <tr>
-        <td>Title</td>
-        <td>Address</td>
-    </tr>
+<div class="row">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.Title</td>
-            <td>@item.Address</td>
-        </tr>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="gym-container">
+                <div class="gym-image">
+                    <img src="~/img/uploaded/@item.Images.FirstOrDefault(p => p.IsCoverPhoto)?.FileName" alt="">
+                </div>
+                <div class="gym-content">
+                    <h3><a href="#">@item.Title</a></h3>
+                    <p>
+                        @item.Address
+                    </p>
+                </div>
+                <div class="gym-features">
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </div>
+            </div>
+        </div>
     }
-</table>
+</div>
+
+

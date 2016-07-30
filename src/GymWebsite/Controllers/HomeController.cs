@@ -1,6 +1,7 @@
 ﻿using GymWebsite.Services.Interfaces;
 using GymWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace GymWebsite.Controllers
@@ -29,6 +30,12 @@ namespace GymWebsite.Controllers
             _gymService.AddGym(model);
 
             return RedirectToAction("List");
+        }
+
+        public IActionResult Details(Guid id)
+        {
+            var item = _gymService.GetGymById(id);
+            return View(item);
         }
     }
 }

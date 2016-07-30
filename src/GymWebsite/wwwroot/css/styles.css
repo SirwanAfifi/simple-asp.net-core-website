@@ -3,3 +3,47 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.gym-container {
+    margin-bottom: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.gym-image {
+    position: relative;
+    overflow: hidden;
+}
+.gym-image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.gym-content {
+    padding: 10px 15px;
+}
+.gym-content h3, .gym-text h3 {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+}
+.gym-content h3 small, .gym-text h3 small {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-style: italic;
+}
+.gym-features {
+    display: block;
+    padding: 5px 10px;
+    background: #4fc1e9;
+    color: #fff;
+}
+.gym-features a {
+    color: white;
+}
+.gym-features span {
+    padding: 2px 5px;
+    font-size: 13px;
+}

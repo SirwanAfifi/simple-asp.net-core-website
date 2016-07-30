@@ -1,9 +1,11 @@
-﻿using GymWebsite.Services.Concreates;
+﻿using System.IO;
+using GymWebsite.Services.Concreates;
 using GymWebsite.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace GymWebsite
 {
@@ -42,15 +44,29 @@ namespace GymWebsite
                 app.UseExceptionHandler(errorHandlingPath: "/HomeController/ShowError");
             }
 
-            app.UseStaticFiles();
+            app.UseFileServer();
+
+            // Serve /node_modules as a separate root (for packages that use other npm modules client side)
+            app.UseFileServer(new FileServerOptions
+            {
+                // Set root of file server
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
+                // Only react to requests that match this path
+                RequestPath = "/node_modules",
+                // Don't expose file system
+                EnableDirectoryBrowsing = false
+            });
+
+            //app.UseMvcWithDefaultRoute();
 
             app.UseMvc(config =>
             {
                 config.MapRoute(
                     name: "Default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" }
-                    );
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+                // for SPA apps
+                config.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
         }
     }

@@ -1,4 +1,6 @@
 $(function () {
+
+    $('.carousel').carousel();
     var i = 1;
     $('#btnAddImage').click(function () {
         if (i != 3) {

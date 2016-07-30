@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace GymWebsite.ViewModels
 {
@@ -19,7 +20,7 @@ namespace GymWebsite.ViewModels
 
     public class Image
     {
-        public string FileName { get; set; }
+        public IFormFile FileName { get; set; }
         public int Order { get; set; }
         public bool IsEnabled { get; set; }
         public bool IsCoverPhoto { get; set; }

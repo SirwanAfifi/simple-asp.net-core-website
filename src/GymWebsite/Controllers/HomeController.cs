@@ -1,17 +1,21 @@
 ﻿using GymWebsite.Services.Interfaces;
 using GymWebsite.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GymWebsite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IGymService _gymService;
-        public HomeController(IGymService gymService)
+        private IHostingEnvironment _environment;
+        public HomeController(IGymService gymService, IHostingEnvironment environment)
         {
             _gymService = gymService;
+            _environment = environment;
         }
         public IActionResult List()
         {
@@ -28,6 +32,15 @@ namespace GymWebsite.Controllers
         public IActionResult Create(Gym model)
         {
             _gymService.AddGym(model);
+
+            var uploads = Path.Combine(_environment.WebRootPath, "img/uploaded");
+            foreach (var file in model.Images)
+            {
+                using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName.FileName), FileMode.Create))
+                {
+                    file.FileName.CopyTo(fileStream);
+                }
+            }
 
             return RedirectToAction("List");
         }

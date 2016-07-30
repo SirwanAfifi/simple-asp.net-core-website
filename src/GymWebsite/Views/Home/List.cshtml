@@ -13,7 +13,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="gym-container">
                 <div class="gym-image">
-                    <img src="~/img/uploaded/@item.Images.FirstOrDefault(p => p.IsCoverPhoto)?.FileName" alt="">
+                    <img src="~/img/uploaded/@item.Images.FirstOrDefault(p => !p.IsCoverPhoto)?.FileName.FileName" alt="">
                 </div>
                 <div class="gym-content">
                     <h3><a href="#">@item.Title</a></h3>

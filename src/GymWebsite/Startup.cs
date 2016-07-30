@@ -64,7 +64,7 @@ namespace GymWebsite
             {
                 config.MapRoute(
                     name: "Default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=home}/{action=list}/{id?}");
 
                 // for SPA apps
                 config.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });

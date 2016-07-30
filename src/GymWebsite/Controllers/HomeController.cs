@@ -6,7 +6,7 @@ namespace GymWebsite.Controllers
     {
         public IActionResult Index()
         {
-            return Content("Welcome");
+            return View();
         }
     }
 }

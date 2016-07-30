@@ -47,7 +47,7 @@ namespace GymWebsite
             app.UseFileServer();
 
             // Serve /node_modules as a separate root (for packages that use other npm modules client side)
-            app.UseFileServer(new FileServerOptions
+            /*app.UseFileServer(new FileServerOptions
             {
                 // Set root of file server
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
@@ -55,7 +55,7 @@ namespace GymWebsite
                 RequestPath = "/node_modules",
                 // Don't expose file system
                 EnableDirectoryBrowsing = false
-            });
+            });*/
 
             //app.UseMvcWithDefaultRoute();
 

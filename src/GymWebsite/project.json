@@ -12,7 +12,8 @@
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     "GymWebsite.Services": "1.0.0-*",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Microsoft.AspNetCore.SpaServices": "1.0.0-beta-000009"
+    "Microsoft.AspNetCore.SpaServices": "1.0.0-beta-000009",
+    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0"
   },
 
   "tools": {

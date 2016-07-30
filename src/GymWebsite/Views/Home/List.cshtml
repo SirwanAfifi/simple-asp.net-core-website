@@ -1,0 +1,21 @@
+﻿@model List<GymWebsite.ViewModels.Gym>
+@{ 
+    ViewBag.Title = "Home Page";
+}
+
+<a asp-action="create" class="btn btn-info">Create a new gym</a>
+<hr />
+
+<table class="table table-bordered table-condensed table-striped">
+    <tr>
+        <td>Title</td>
+        <td>Address</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+</table>

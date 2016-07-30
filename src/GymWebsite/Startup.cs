@@ -30,6 +30,7 @@ namespace GymWebsite
 
 
             services.AddTransient<IMessageService, MessageService>();
+            services.AddSingleton<IGymService, GymService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

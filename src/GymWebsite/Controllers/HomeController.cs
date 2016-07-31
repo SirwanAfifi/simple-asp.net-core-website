@@ -51,5 +51,11 @@ namespace GymWebsite.Controllers
             var item = _gymService.GetGymById(id);
             return View(item);
         }
+
+        public IActionResult Edit(Guid id)
+        {
+            var item = _gymService.GetGymById(id);
+            return View(item);
+        }
     }
 }

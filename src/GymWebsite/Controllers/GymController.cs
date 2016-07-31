@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using GymWebsite.ViewModels;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace GymWebsite.Controllers
 {
@@ -11,9 +13,11 @@ namespace GymWebsite.Controllers
     public class GymController : Controller
     {
         private readonly IGymService _gymService;
-        public GymController(IGymService gymService)
+        private IHostingEnvironment _environment;
+        public GymController(IGymService gymService, IHostingEnvironment environment)
         {
             _gymService = gymService;
+            _environment = environment;
         }
         public IEnumerable<GymViewModel> Get()
         {
@@ -24,6 +28,18 @@ namespace GymWebsite.Controllers
                 Address = p.Address,
                 Image = $"/img/uploaded/{p.Images.FirstOrDefault(k => !k.IsCoverPhoto)?.FileName.FileName}"
             });
+        }
+
+        [HttpPost("/api/deleteImage/{imageName}")]
+        public IActionResult DeleteImage(string imageName)
+        {
+            if (_gymService.DeleteImage(imageName))
+            {
+                var file = Path.Combine(_environment.WebRootPath, $"img/uploaded/{imageName}");
+                System.IO.File.Delete(file);
+                return Json("ok");
+            }
+            return Json("no");
         }
     }
 }

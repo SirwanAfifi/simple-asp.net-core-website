@@ -32,5 +32,11 @@ namespace GymWebsite.Services.Interfaces
         /// </summary>
         /// <returns>لیست باشگاه‌ها</returns>
         IList<Gym> GetGyms();
+        /// <summary>
+        /// حذف یک تصویر باشگاه
+        /// </summary>
+        /// <param name="imageName">نام تصویر</param>
+        /// <returns>آیا آیتم حذف شده است؟</returns>
+        bool DeleteImage(string imageName);
     }
 }

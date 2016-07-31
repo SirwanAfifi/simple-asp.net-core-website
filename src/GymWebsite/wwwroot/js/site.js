@@ -18,4 +18,19 @@ $(function () {
             alert("You can only add three items");
         }
     });
+
+    $('.btnDeleteImg').click(function (event) {
+        event.preventDefault()
+        var name = $(this).data('image');
+        console.log(name);
+        $.ajax({
+            type: 'POST',
+            url: '/api/deleteImage/' + name,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                alert('image deleted!');
+            }
+        });
+    });
 });

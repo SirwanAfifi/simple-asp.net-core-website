@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GymWebsite.Services.Interfaces;
 using GymWebsite.ViewModels;
+using System.Linq;
 
 namespace GymWebsite.Services.Concreates
 {
@@ -21,6 +22,22 @@ namespace GymWebsite.Services.Concreates
         {
             var item = _gyms.Find(p => p.Id == gymId);
             _gyms.Remove(item);
+        }
+
+        public bool DeleteImage(string imageName)
+        {
+            bool ii = false;
+            _gyms.ForEach(p => {
+                if (p.Images.Any(i => i.FileName.FileName == imageName))
+                {
+                    var img = p.Images.FirstOrDefault(i => i.FileName.FileName == imageName);
+                    p.Images.Remove(img);
+                    ii = true;
+                    return;
+                }
+            });
+
+            return ii;
         }
 
         public Gym GetGymById(Guid gymId)

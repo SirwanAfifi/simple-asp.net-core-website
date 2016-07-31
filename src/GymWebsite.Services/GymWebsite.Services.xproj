@@ -7,7 +7,7 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>a7fc667a-d990-439c-9f9f-091cfe00862f</ProjectGuid>
+    <ProjectGuid>df5a59fa-9bef-4a0f-82f3-a012a31032e1</ProjectGuid>
     <RootNamespace>GymWebsite.Services</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>

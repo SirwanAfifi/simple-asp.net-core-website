@@ -7,26 +7,34 @@
 <hr />
 
 <div class="row">
-    @foreach (var item in Model)
-    {
+    <div class="col-md-4">
+        <select class="form-control" ng-model="sortBy">
+            <option value="None">-- Select --</option>
+            <option value="title">Title</option>
+            <option value="adress">Address</option>
+        </select>
+    </div>
+</div>
+<hr />
 
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="gym-container">
-                <div class="gym-image">
-                    <img src="~/img/uploaded/@item.Images.FirstOrDefault(p => !p.IsCoverPhoto)?.FileName.FileName" alt="">
-                </div>
-                <div class="gym-content">
-                    <h3><a href="#">@item.Title</a></h3>
-                    <p>
-                        @item.Address
-                    </p>
-                </div>
-                <div class="gym-features">
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </div>
+<div class="row" ng-controller="gymController as vm">
+    
+    <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="gym in vm.gymList | orderBy:sortBy ">
+        <div class="gym-container">
+            <div class="gym-image">
+                <img ng-src="{{gym.image}}" alt="">
+            </div>
+            <div class="gym-content">
+                <h3><a href="#">{{gym.title}}</a></h3>
+                <p>
+                    {{gym.address}}
+                </p>
+            </div>
+            <div class="gym-features">
+                <a href="/home/details/{{gym.id}}">Details</a>
             </div>
         </div>
-    }
+    </div>
 </div>
 
 

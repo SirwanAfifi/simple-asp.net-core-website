@@ -33,6 +33,7 @@ namespace GymWebsite.Controllers
         {
             _gymService.AddGym(model);
 
+            // Uploading a new file
             var uploads = Path.Combine(_environment.WebRootPath, "img/uploaded");
             foreach (var file in model.Images)
             {

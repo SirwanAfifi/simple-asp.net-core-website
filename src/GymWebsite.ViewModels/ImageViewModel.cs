@@ -1,5 +1,8 @@
 ﻿namespace GymWebsite.ViewModels
 {
+    /// <summary>
+    /// ویومدل نمایش تصاویر باشگاه
+    /// </summary>
     public class ImageViewModel
     {
         public string FileName { get; set; }

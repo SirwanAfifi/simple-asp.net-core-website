@@ -26,17 +26,17 @@ namespace GymWebsite.Services.Concreates
 
         public bool DeleteImage(string imageName)
         {
-            bool ii = false;
-            _gyms.ForEach(p => {
-                if (p.Images.Any(i => i.FileName.FileName == imageName))
+            var ii = false;
+            // جستجو درون تصاویر و سپس حذف تصویر
+            _gyms.ForEach(p =>
+            {
+                if (p.Images.All(i => i.FileName.FileName != imageName)) return;
                 {
                     var img = p.Images.FirstOrDefault(i => i.FileName.FileName == imageName);
                     p.Images.Remove(img);
                     ii = true;
-                    return;
                 }
             });
-
             return ii;
         }
 
@@ -53,6 +53,15 @@ namespace GymWebsite.Services.Concreates
         public void UpdateGym(Gym model)
         {
             var item = _gyms.Find(p => p.Id == model.Id);
+            item.Title = model.Title;
+            item.Address = model.Address;
+            if (model.Images != null)
+            {
+                foreach (var img in model.Images)
+                {
+                    item.Images.Add(img);
+                }
+            }
         }
     }
 }

@@ -1,7 +1,14 @@
 $(function () {
 
     $('.carousel').carousel();
-    var i = 1;
+
+    var editMode = $('#btnAddImage').data('edit');
+    if (editMode)
+        i = 0;
+    else
+        i = 1;
+
+    console.log(i);
     $('#btnAddImage').click(function () {
         if (i != 3) {
             var template = `<div class="col-sm-4">

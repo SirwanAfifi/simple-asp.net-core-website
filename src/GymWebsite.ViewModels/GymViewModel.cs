@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GymWebsite.ViewModels
 {
+    /// <summary>
+    /// ویومدل نمایش لیست باشگاه‌ها
+    /// </summary>
     public class GymViewModel
     {
         public Guid Id { get; set; }

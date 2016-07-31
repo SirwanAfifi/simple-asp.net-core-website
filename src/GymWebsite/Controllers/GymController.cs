@@ -12,13 +12,18 @@ namespace GymWebsite.Controllers
     [Route("api/[controller]")]
     public class GymController : Controller
     {
+        #region Dependencies
         private readonly IGymService _gymService;
         private IHostingEnvironment _environment;
+        #endregion
+        #region Ctor
         public GymController(IGymService gymService, IHostingEnvironment environment)
         {
             _gymService = gymService;
             _environment = environment;
         }
+        #endregion
+        #region API Methods
         public IEnumerable<GymViewModel> Get()
         {
             return _gymService.GetGyms().Select(p => new GymViewModel
@@ -41,5 +46,6 @@ namespace GymWebsite.Controllers
             }
             return Json("no");
         }
+        #endregion
     }
 }

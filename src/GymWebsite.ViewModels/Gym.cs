@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace GymWebsite.ViewModels
 {
+    /// <summary>
+    /// موجودیت باشگاه
+    /// </summary>
     public class Gym
     {
         public Gym()
@@ -17,7 +20,9 @@ namespace GymWebsite.ViewModels
         public string Address { get; set; }
         public List<Image> Images { get; set; }
     }
-
+    /// <summary>
+    /// موجودیت تصویر
+    /// </summary>
     public class Image
     {
         public IFormFile FileName { get; set; }
